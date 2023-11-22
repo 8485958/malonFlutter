@@ -43,18 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
     new Module(
         name: 'הודעה לאנשי הצוות', icon: Icon(Icons.chat), screen: ListStaff()),
     new Module(
-        name: 'מה נשמע עם אבא', icon: Icon(Icons.person_2), screen: Contacts()),
-    new Module(
-        name: 'עדכונים שוטפים',
-        icon: Icon(Icons.next_week),
-        screen: ListStaff())
+        name: 'רשימת משימות', icon: Icon(Icons.task), screen: Contacts()),
   ];
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 300,
               ),
               SizedBox(
-                height: 320.0,
+                height: 280.0,
                 child: ListView.builder(
                     padding: const EdgeInsets.all(8),
                     itemCount: listModules.length,
