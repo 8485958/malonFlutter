@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -40,9 +39,16 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  List<Module> listModules = [new Module(name:'הודעה לאנשי הצוות',icon: Icon(Icons.chat),screen: ListStaff() ),
-    new Module(name:'מה נשמע עם אבא',icon: Icon(Icons.person_2),screen: Contacts() ),
-    new Module(name:'עדכונים שוטפים',icon: Icon(Icons.next_week),screen: ListStaff() )];
+  List<Module> listModules = [
+    new Module(
+        name: 'הודעה לאנשי הצוות', icon: Icon(Icons.chat), screen: ListStaff()),
+    new Module(
+        name: 'מה נשמע עם אבא', icon: Icon(Icons.person_2), screen: Contacts()),
+    new Module(
+        name: 'עדכונים שוטפים',
+        icon: Icon(Icons.next_week),
+        screen: ListStaff())
+  ];
 
   void _incrementCounter() {
     setState(() {
@@ -50,53 +56,66 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xffb97632),
-        title: Center(child: Text("מלון סיעודי שלמה המלך",style: (TextStyle(color: Color(
-            0xfff6f2f2),fontWeight: FontWeight.bold)))),
+        backgroundColor: Color.fromARGB(255, 5, 3, 61),
+        title: Center(
+            child: Text("מלון סיעודי שלמה המלך",
+                style: (TextStyle(
+                    color: Color(0xfff6f2f2), fontWeight: FontWeight.bold)))),
       ),
-      body: Container(
+      body: SingleChildScrollView(
+        child: Container(
           decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/backgroundlogo.png"),
-              fit: BoxFit.cover,
-              colorFilter:
-              ColorFilter.mode(Colors.black.withOpacity(0.7),
-                  BlendMode.dstATop),
-            )
-          ),
-        child: Column(
-          children: [
-            Image.asset("assets/imglogo.png",width: 200,height: 180,),
- SizedBox(height: 300,),
-      SizedBox(
-        height: 320.0,
-        child: ListView.builder(
-      padding: const EdgeInsets.all(8),
-        itemCount: listModules.length,
-        itemBuilder: (BuildContext context, int index) {
-        return Container(
-          height: 80,
-          color: Colors.white70,
-          child: Center(child: TextButton(onPressed: () {
-            Get.to(listModules[index].screen);
-          },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+              image: DecorationImage(
+            image: AssetImage("assets/backgroundlogo.png"),
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.7), BlendMode.dstATop),
+          )),
+          child: Column(
             children: [
-              Center(child: listModules[index].icon),
-              Text('${listModules[index].name}',style: (TextStyle(fontWeight: FontWeight.bold)),),
+              Image.asset(
+                "assets/imglogo.png",
+                width: 200,
+                height: 180,
+              ),
+              SizedBox(
+                height: 300,
+              ),
+              SizedBox(
+                height: 320.0,
+                child: ListView.builder(
+                    padding: const EdgeInsets.all(8),
+                    itemCount: listModules.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        height: 80,
+                        color: Colors.white70,
+                        child: Center(
+                            child: TextButton(
+                                onPressed: () {
+                                  Get.to(listModules[index].screen);
+                                },
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Center(child: listModules[index].icon),
+                                    Text(
+                                      '${listModules[index].name}',
+                                      style: (TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                                    ),
+                                  ],
+                                ))),
+                      );
+                    }),
+              ),
             ],
-          ))),
-        );
-        }
-    ),
-      ),
-          ],
+          ),
         ),
       ),
     );
